@@ -23,7 +23,7 @@ const HeroSection = ({ setLoading }) => {
                 start: clamp('top top'),
                 end: clamp('bottom -100%'),
                 scrub: true,
-                // onUpdate: (prop) => prop.progress == 0 && ScrollTrigger.refresh(),
+                onUpdate: (prop) => prop.progress == 0 && ScrollTrigger.refresh(),
                 onEnter: () => ScrollTrigger.refresh(),
                 onEnterBack: () => ScrollTrigger.refresh(),
             }

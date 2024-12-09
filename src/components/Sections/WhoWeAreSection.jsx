@@ -1,9 +1,8 @@
 import React, { memo, useRef } from 'react'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Send } from 'lucide-react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimateHeadings from '../AnimateHeadings';
+import ButtonWithSendIcon from '../ButtonWithSendIcon';
 
 const WhoWeAreSection = ({ setTheme }) => {
     const themeChanger1toLight= useRef(null);
@@ -61,7 +60,7 @@ const WhoWeAreSection = ({ setTheme }) => {
         </h2>
       </AnimateHeadings>
       <p className='text-[11px] font-general opacity-80 text-center w-[400px] MB:w-[80vw] microMB:w-[90vw] MB:max-w-[400px] microMB:max-w-[320px] mx-auto my-5'>Zenity unites every player from countless games and platforms, both digital and physical, into a unified Play Economy.</p>
-      <button className='center gap-x-2 text-[10px] opacity-100 px-5  rounded-[50px] border-[1px] border-solid py-2 duration-100 hover:bg-blue-75 bg-zinc-950  text-blue-75 hover:text-black border-black border-opacity-100'><Send size={10} /> Discover Who We Are</button>
+      <ButtonWithSendIcon content='Discover Who We Are' />
     </div>
   )
 }

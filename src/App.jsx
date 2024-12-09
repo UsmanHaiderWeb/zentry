@@ -17,32 +17,32 @@ function App() {
 
   return (<>
     {loading &&
-      <div className="fixed top-0 left-0 right-0 bottom-0 z-50 bg-blue-75 flex justify-center items-center">
+      <div className="w-full h-screen fixed top-0 left-0 z-50 bg-blue-75 flex justify-center items-center">
         <div className="animate-spin h-14 w-14 border-2 border-[#bababa] border-b-blue-700 rounded-full"></div>
       </div>
     }
-      <main className={`relative min-h-screen w-full ${themeRef === 'dark' ? 'bg-black' : (themeRef === 'yellow' ? 'bg-[#EDFF66]' : 'bg-blue-75')}`}>
-        <div className='overflow-hidden relative bg-blue-75'>
-          <Header />
-          <HeroSection setLoading={setLoading} />
-          <PinImageSection />
+    <main className={`relative w-full h-max ${themeRef === 'dark' ? 'bg-black' : (themeRef === 'yellow' ? 'bg-[#EDFF66]' : 'bg-blue-75')}`}>
+      <div className='overflow-hidden relative bg-blue-75'>
+        <Header />
+        <HeroSection setLoading={setLoading} />
+        <PinImageSection />
+      </div>
+      <div className={`overflow-hidden relative ${themeRef === 'dark' ? 'bg-black' : (themeRef === 'yellow' ? 'bg-[#EDFF66]' : 'bg-blue-75')}`}>
+        <CardsSection />
+        <HiddenRealm themeRef={themeRef} />
+        <div className={`w-full min-h-screen ${themeRef === 'dark' ? 'bg-black' : (themeRef === 'yellow' ? 'bg-[#EDFF66]' : 'bg-blue-75')}`}>
+          <ZentPin setTheme={setTheme} />
         </div>
-        <div className={`overflow-hidden relative ${themeRef === 'dark' ? 'bg-black' : (themeRef === 'yellow' ? 'bg-[#EDFF66]' : 'bg-blue-75')}`}>
-          <CardsSection />
-          <HiddenRealm themeRef={themeRef} />
-          <div className={`w-full min-h-screen ${themeRef === 'dark' ? 'bg-black' : (themeRef === 'yellow' ? 'bg-[#EDFF66]' : 'bg-blue-75')}`}>
-            <ZentPin setTheme={setTheme} />
-          </div>
-          <div className={`w-full min-h-screen ${themeRef === 'yellow' ? 'bg-[#EDFF66]' : 'bg-blue-75'}`}>
-            <WhoWeAreSection setTheme={setTheme} />
-          </div>
+        <div className={`w-full min-h-screen ${themeRef === 'yellow' ? 'bg-[#EDFF66]' : 'bg-blue-75'}`}>
+          <WhoWeAreSection setTheme={setTheme} />
         </div>
-        <StickyContentSection setTheme={setTheme} />
-        <div className="overflow-hidden relative">
-          <ContactSection />
-          <Footer />
-        </div>
-      </main>
+      </div>
+      <StickyContentSection setTheme={setTheme} />
+      <div className="overflow-hidden relative w-full">
+        <ContactSection />
+        <Footer />
+      </div>
+    </main>
   </>);
 }
 
