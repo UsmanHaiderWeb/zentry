@@ -26,10 +26,7 @@ const Header = () => {
                     <SkewButton content='Products' />
                     <SkewButton content='Whitepaper' />
                 </div>
-                <div className='relative flex justify-center items-center pb-2 h-[50px] px-2 cursor-pointer' onClick={() => {
-                    // i.toggleSideBar(!!true);
-                    window.scrollTo(0, 0);
-                }}>
+                <div className='relative flex justify-center items-center pb-2 h-[50px] px-2 cursor-pointer'>
                     <div className='w-[30px] micro:w-[25px] flex flex-col items-center justify-center relative pointer-events-none'>
                         <div className={`${!true ? "rotate-[-45deg] origin-right -translate-x-1" : "rotate-[0deg] origin-right"} w-[20px] micro:w-4 h-[2px] mb-[6px] bg-white duration-300`}></div>
                         <div className={`${!true ? "rotate-[45deg] origin-right -translate-x-1" : "rotate-[0deg] origin-right"} w-[20px] micro:w-4 h-[2px] bg-white duration-300`}></div>
