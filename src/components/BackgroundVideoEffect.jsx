@@ -1,31 +1,32 @@
-import React, { memo, useRef, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import Tilt from 'react-parallax-tilt'
 
 
-const BackgroundVideoEffect = () => {
+const BackgroundVideoEffect = ({setLoading}) => {
     const [ bgVideoStates, updateState ] = useState({
         currentVideoNum: 1,
         tiltVideo1: false,
-        tiltVideo2: true,   
-        tiltVideo3: false,
-        tiltVideo4: false,
-        isClicked2: false,
+        // tiltVideo2: true,   
+        // tiltVideo3: false,
+        // tiltVideo4: false,
+        // isClicked2: false,
     });
 
     const video1 = useRef(null);
     const videoCon1 = useRef(null);
     const videoTiltCon1 = useRef(null);
-    const video2 = useRef(null);
-    const videoCon2 = useRef(null);
-    const videoTiltCon2 = useRef(null);
-    const video3 = useRef(null);
-    const videoCon3 = useRef(null);
-    const videoTiltCon3 = useRef(null);
-    const video4 = useRef(null);
-    const videoCon4 = useRef(null);
-    const videoTiltCon4 = useRef(null);
+    // const video2 = useRef(null);
+    // const videoCon2 = useRef(null);
+    // const videoTiltCon2 = useRef(null);
+    // const video3 = useRef(null);
+    // const videoCon3 = useRef(null);
+    // const videoTiltCon3 = useRef(null);
+    // const video4 = useRef(null);
+    // const videoCon4 = useRef(null);
+    // const videoTiltCon4 = useRef(null);
 
     const nextvideo = () => {
+        return;
         if(bgVideoStates.currentVideoNum == 1){
             videoCon2.current.classList.remove('w-60');
             videoCon2.current.classList.remove('h-60');
@@ -185,21 +186,44 @@ const BackgroundVideoEffect = () => {
         }
     }
 
+    useEffect(() => {
+        let videoLoaded = false;
+        let fontsLoaded = false;
+
+        const handleVideoLoaded = () => {
+            videoLoaded = true;
+            if (videoLoaded && fontsLoaded) setLoading(false);
+        }
+        const handleFontsLoaded = () => {
+            fontsLoaded = true;
+            if (videoLoaded && fontsLoaded) setLoading(false);
+        }
+
+        if (video1.current) {
+            video1.current.addEventListener('loadeddata', handleVideoLoaded);
+        }
+        document.fonts.ready.then(handleFontsLoaded);
+
+        return () => {
+            video1.current.removeEventListener('loadeddata', handleVideoLoaded);
+        }
+    }, [video1.current, document.fonts])
+
     return (<>
         <div className="w-screen h-screen absolute top-0 left-0 overflow-hidden z-[1]">
             <div ref={videoCon1} className='absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 duration-1000 ease-out pointer-events-none' onClick={() => {
-                nextvideo();
-                updateState(prev => ({...prev, tiltVideo1: false, tiltVideo2: true}));
-                videoTiltCon1.current.tilt.tiltAngleX = 0;
-                videoTiltCon1.current.tilt.tiltAngleXPercentage = 0;
-                videoTiltCon1.current.tilt.tiltAngleY = 0;
-                videoTiltCon1.current.tilt.tiltAngleYPercentage = 0;
+                // nextvideo();
+                // updateState(prev => ({...prev, tiltVideo1: false, tiltVideo2: true}));
+                // videoTiltCon1.current.tilt.tiltAngleX = 0;
+                // videoTiltCon1.current.tilt.tiltAngleXPercentage = 0;
+                // videoTiltCon1.current.tilt.tiltAngleY = 0;
+                // videoTiltCon1.current.tilt.tiltAngleYPercentage = 0;
             }}>
                 <Tilt tiltMaxAngleX={25} tiltMaxAngleY={25} ref={videoTiltCon1} tiltEnable={bgVideoStates.tiltVideo1} className='w-full h-full duration-1000 ease-out center'>
-                    <video ref={video1} src='/videos/hero-1.mp4' autoPlay muted loop className='w-full h-full object-cover'></video>
+                    <video ref={video1} src='/videos/hero-2.mp4' poster='/img/hero-2-poster.webp' autoPlay muted loop className='w-full h-full object-cover'></video>
                 </Tilt>
             </div>
-            <div ref={videoCon2} className='absolute top-1/2 left-1/2 w-60 h-60 -translate-x-1/2 -translate-y-1/2 duration-1000 ease-out' onClick={() => {
+            {/* <div ref={videoCon2} className='absolute top-1/2 left-1/2 w-60 h-60 -translate-x-1/2 -translate-y-1/2 duration-1000 ease-out' onClick={() => {
                 nextvideo();
                 updateState(prev => ({...prev, tiltVideo2: false, tiltVideo3: true, isClicked2: true}));
                 videoTiltCon2.current.tilt.tiltAngleX = 0;
@@ -244,7 +268,7 @@ const BackgroundVideoEffect = () => {
                 <Tilt tiltMaxAngleX={25} tiltMaxAngleY={25} ref={videoTiltCon4} tiltEnable={bgVideoStates.tiltVideo4} className='w-full h-full duration-1000 ease-out center'>
                     <video ref={video4} src={`/videos/hero-4.mp4`} muted loop className='w-full h-full object-cover rounded-xl duration-1000 ease-out'></video>
                 </Tilt>
-            </div>
+            </div> */}
         </div>
 </>)}
 

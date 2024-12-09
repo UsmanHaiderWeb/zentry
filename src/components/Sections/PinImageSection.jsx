@@ -1,6 +1,6 @@
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import { useGSAP } from '@gsap/react';
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import React, { memo, useRef } from 'react';
 import AnimateHeadings from '../AnimateHeadings';
 
@@ -10,39 +10,39 @@ const PinImageSection = () => {
   const pintrigger = useRef(null);
   const stones = useRef(null);
 
-  useGSAP(() => {
-    // Create GSAP timeline for scroll-triggered animations
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: pintrigger.current,
-        scroller: 'body',
-        start: 'top top', // Ensure this is set properly for when the pin should start
-        end: '+=100%', // Pin until the section reaches the bottom (adjust as needed)
-        scrub: true,
-        anticipatePin: 1,
-        pinSpacing: true, // This ensures the space occupied by the image is kept even when unpinned
-        pin: true,
-        onLeave: () => ScrollTrigger.refresh(), // Refresh on leave if needed
-        onEnterBack: () => ScrollTrigger.refresh(), // Refresh on enter back if needed
-      }
-    });
+  // useGSAP(() => {
+  //   // Create GSAP timeline for scroll-triggered animations
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: pintrigger.current,
+  //       scroller: 'body',
+  //       start: 'top top', // Ensure this is set properly for when the pin should start
+  //       end: '+=100%', // Pin until the section reaches the bottom (adjust as needed)
+  //       scrub: true,
+  //       anticipatePin: 1,
+  //       pinSpacing: true, // This ensures the space occupied by the image is kept even when unpinned
+  //       pin: true,
+  //       onLeave: () => ScrollTrigger.refresh(), // Refresh on leave if needed
+  //       onEnterBack: () => ScrollTrigger.refresh(), // Refresh on enter back if needed
+  //     }
+  //   });
 
-    // Add the animations to the timeline
-    tl.to(pinImageCon.current, {
-      clipPath: 'path("M 1350.5 -371.5 L 1350.5 -371.5 Q 1358.5 -371.5 1358.5 -363.5 L 1358.5 988.5 Q 1358.5 996.5 1350.5 996.5 L -1.5 996.5 Q -9.5 996.5 -9.5 988.5 L -9.5 -363.5 Q -9.5 -371.5 -1.5 -371.5 Z")', 
-      ease: 'linear'
-    }, 'same');
+  //   // Add the animations to the timeline
+  //   tl.to(pinImageCon.current, {
+  //     clipPath: 'path("M 1350.5 -371.5 L 1350.5 -371.5 Q 1358.5 -371.5 1358.5 -363.5 L 1358.5 988.5 Q 1358.5 996.5 1350.5 996.5 L -1.5 996.5 Q -9.5 996.5 -9.5 988.5 L -9.5 -363.5 Q -9.5 -371.5 -1.5 -371.5 Z")', 
+  //     ease: 'linear'
+  //   }, 'same');
 
-    tl.to(pinImage.current, {
-      scale: 1,
-      ease: 'linear'
-    }, 'same');
+  //   tl.to(pinImage.current, {
+  //     scale: 1,
+  //     ease: 'linear'
+  //   }, 'same');
 
-    tl.to(stones.current, {
-      scale: 1,
-      ease: 'linear'
-    }, 'same');
-  }, []);
+  //   tl.to(stones.current, {
+  //     scale: 1,
+  //     ease: 'linear'
+  //   }, 'same');
+  // }, []);
 
   return (
     <div className='w-[100dvw] overflow-hidden min-h-screen pt-32 relative bg-blue-75'>

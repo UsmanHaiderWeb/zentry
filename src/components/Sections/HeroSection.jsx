@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import _ScrollTrigger, { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { clamp } from 'gsap/gsap-core'
-const HeroSection = () => {
+const HeroSection = ({ setLoading }) => {
     gsap.registerPlugin(ScrollTrigger);
 
     const heroRef = useRef(null);
@@ -23,7 +23,7 @@ const HeroSection = () => {
                 start: clamp('top top'),
                 end: clamp('bottom -100%'),
                 scrub: true,
-                onUpdate: (prop) => prop.progress == 0 && ScrollTrigger.refresh(),
+                // onUpdate: (prop) => prop.progress == 0 && ScrollTrigger.refresh(),
                 onEnter: () => ScrollTrigger.refresh(),
                 onEnterBack: () => ScrollTrigger.refresh(),
             }
@@ -45,7 +45,7 @@ const HeroSection = () => {
   return (
     <div className='w-full h-screen overflow-hidden relative bg-blue-75'>
         <div ref={heroRef} className='w-full h-full overflow-hidden relative z-[4]' style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}}>
-            <BackgroundVideoEffect />
+            <BackgroundVideoEffect setLoading={setLoading} />
             <div ref={heroTextRef} className='w-full h-full flex justify-between items-start flex-col relative z-[5] pt-24 pointer-events-none'>
                 <div className='w-full pl-10 miniTB:pl-5 MB:pl-5 microMB:pl-4'>
                     <h1 className='uppercase font-zentry md:text-[170px] md:leading-[140px] text-[140px] leading-[120px] miniTB:text-[100px] miniTB:leading-[80px] MB:text-[100px] MB:leading-[80px] microMB:text-[80px] microMB:leading-[65px] overflow-hidden text-[#DFDFF2]'>Redefine</h1>

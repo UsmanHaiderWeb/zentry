@@ -16,7 +16,7 @@ const AnimateHeadings = ({ children, animationDirection, startingPoint, opacity,
             scrollTrigger: {
                 trigger: headingCon.current,
                 scroller: 'body',
-                start: `top ${startingPoint || '85%'}`,
+                start: `top ${startingPoint || '92%'}`,
                 end: 'top -1200vh',
                 toggleActions: 'play reverse play reverse'
             }
