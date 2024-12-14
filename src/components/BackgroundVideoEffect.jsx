@@ -220,7 +220,7 @@ const BackgroundVideoEffect = ({setLoading}) => {
                 // videoTiltCon1.current.tilt.tiltAngleYPercentage = 0;
             }}>
                 <Tilt tiltMaxAngleX={25} tiltMaxAngleY={25} ref={videoTiltCon1} tiltEnable={bgVideoStates.tiltVideo1} className='w-full h-full duration-1000 ease-out center'>
-                    <video ref={video1} src='/videos/hero-2.mp4' poster='/img/hero-2-poster.webp' autoPlay muted loop className='w-full h-full object-cover'></video>
+                    <video ref={video1} src='/videos/hero-2.webm' poster='/img/hero-2-poster.webp' autoPlay muted loop className='w-full h-full object-cover'></video>
                 </Tilt>
             </div>
             {/* <div ref={videoCon2} className='absolute top-1/2 left-1/2 w-60 h-60 -translate-x-1/2 -translate-y-1/2 duration-1000 ease-out' onClick={() => {
